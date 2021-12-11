@@ -17,7 +17,7 @@ def canUnlockAll(boxes):
                 if j < len(boxes):
                     if boxes[j] != [] and type(boxes[j]) == list:
                         unlocked_boxes_index.extend(boxes[j])
-                    if boxes[j] == None:
+                    if boxes[j] is None:
                         return False
                     if type(boxes[j]) == int:
                         unlocked_boxes_index.append(boxes[j])
