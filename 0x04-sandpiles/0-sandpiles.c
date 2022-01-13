@@ -12,8 +12,7 @@ int stable(int arr[3][3])
 		for (j = 0; j < 3; j++)
 			if (arr[i][j] > 3)
 				return (0);
-	return (1);
-}
+	return (1); }
 /**
  * print_grid - Print 3x3 grid
  * @grid: 3x3 grid
@@ -30,8 +29,7 @@ static void print_grid(int grid[3][3])
 				printf(" ");
 			printf("%d", grid[i][j]);
 		}
-		printf("\n");
-	}
+		printf("\n"); }
 }
 /**
  * copy_result - copy result from arr_from to arr_to
@@ -44,8 +42,7 @@ void copy_result(int arr_from[3][3], int arr_to[3][3])
 
 	for (i = 0; i < 3; i++)
 		for (j = 0; j < 3; j++)
-			arr_to[i][j] = arr_from[i][j];
-}
+			arr_to[i][j] = arr_from[i][j]; }
 /**
  * new_grid - making new grid
  * @grid: 3x3 grid (all zeros)
@@ -56,8 +53,7 @@ void new_grid(int grid[3][3])
 
 	for (i = 0; i < 3; i++)
 		for (j = 0; j < 3; j++)
-			grid[i][j] = 0;
-}
+			grid[i][j] = 0; }
 /**
  * sandpiles_sum - Computes the sum of two sandpiles
  * @grid1: Left 3x3 grid  and Result
@@ -65,7 +61,10 @@ void new_grid(int grid[3][3])
  */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-	int i, j, sum[3][3], new[3][3], type;
+	int i, j;
+	int sum[3][3];
+	int new[3][3];
+	int type;
 
 	for (i = 0; i < 3; i++)
 		for (j = 0; j < 3; j++)
