@@ -27,5 +27,7 @@ int is_palindrome(listint_t **head);
 
 int length_list(listint_t **head);
 bool is_pair(int length);
+int check(listint_t **head, int length, bool pair);
+
 
 #endif /* LISTS_H */
