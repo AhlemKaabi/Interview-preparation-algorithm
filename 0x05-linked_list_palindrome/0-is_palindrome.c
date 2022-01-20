@@ -7,8 +7,9 @@
 int length_list(listint_t **head)
 {
 	listint_t *current;
-	int length = 1;
+	int length;
 
+	length = 1;
 	current = *head;
 	while (current->next != NULL)
 	{
@@ -40,10 +41,11 @@ int check(listint_t **head, int length, bool pair)
 {
 	int intarray[length / 2];
 	listint_t *current;
-	int j, i = 0;
+	int j, i;
 
 	current = *head;
 	j = 0;
+	i = 0;
 	i = length / 2;
 	while (current->next != NULL)
 	{
