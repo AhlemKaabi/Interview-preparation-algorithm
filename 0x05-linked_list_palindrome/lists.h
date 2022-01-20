@@ -1,6 +1,9 @@
 #ifndef LISTS_H
 #define LISTS_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 /**
  * struct listint_s - singly linked list
  * @n: integer
@@ -20,5 +23,9 @@ listint_t *add_nodeint_end(listint_t **head, const int n);
 void free_listint(listint_t *head);
 
 int is_palindrome(listint_t **head);
+
+
+int length_list(listint_t **head);
+bool is_pair(int length);
 
 #endif /* LISTS_H */

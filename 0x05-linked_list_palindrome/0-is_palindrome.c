@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include "lists.h"
 /**
  * length_list - count the length of a linked list
@@ -33,24 +30,21 @@ bool is_pair(int length)
 		return (false);
 }
 /**
- * is_palindrome - checks if a singly linked list is a palindrome.
+ * check - checks if a singly linked list is a palindrome
  * @head: pointer to pointer of first node of listint_t list
+ * @length: length of a linked list
+ * @pair: length pair or not
  * Return: 0 if it is not a palindrome, 1 if it is a palindrome
  */
-int is_palindrome(listint_t **head)
+int check(listint_t **head, int length, bool pair)
 {
-	listint_t *current;
-	int j, i = 0, length = 1;
-	bool pair;
-
-	if (*head == NULL)
-		return (0);
-	length = length_list(head);
-	pair = is_pair(length);
 	int intarray[length / 2];
+	listint_t *current;
+	int j, i = 0;
 
 	current = *head;
 	j = 0;
+	i = length / 2;
 	while (current->next != NULL)
 	{
 		if (j < i)
@@ -84,4 +78,22 @@ int is_palindrome(listint_t **head)
 		if (current->n == intarray[j - 1])
 			return (1);
 	return (1);
+}
+/**
+ * is_palindrome - checks if a singly linked list is a palindrome.
+ * @head: pointer to pointer of first node of listint_t list
+ * Return: 0 if it is not a palindrome, 1 if it is a palindrome
+ */
+int is_palindrome(listint_t **head)
+{
+	int length = 1;
+	bool pair;
+
+	if (*head == NULL)
+		return (0);
+	length = length_list(head);
+	pair = is_pair(length);
+
+
+	return (check(head, length, pair));
 }
