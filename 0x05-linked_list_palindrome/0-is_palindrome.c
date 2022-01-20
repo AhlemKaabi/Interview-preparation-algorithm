@@ -39,46 +39,44 @@ bool is_pair(int length)
  */
 int check(listint_t **head, int length, bool pair)
 {
-	int intarray[length / 2];
 	listint_t *current;
-	int j, i;
+	int j = 0, i = 0;
+	int *array;
 
 	current = *head;
-	j = 0;
-	i = 0;
 	i = length / 2;
+	array = malloc(i * sizeof(int));
 	while (current->next != NULL)
 	{
 		if (j < i)
 		{
-			intarray[j] = current->n;
+			array[j] = current->n;
 			current = current->next;
 			j++;
 			continue; }
 		break; }
 	while (current->next != NULL)
 	{
-		if (pair)
-		{
-			if (intarray[j - 1] == current->n)
-			{
-				current = current->next;
-				j--;
-				continue; }
-			else
-				return (0); }
 		if (!pair)
 		{
 			current = current->next;
 			j--;
-			if (intarray[j] == current->n)
-				continue;
-			else
-				return (0); }
+		}
+		else
+			j--;
+		if (array[j] == current->n)
+		{
+			if (pair)
+				current = current->next;
+			continue;
+		}
+		else
+		{
+			free(array);
+			return (0);
+		}
 	}
-	if (pair)
-		if (current->n == intarray[j - 1])
-			return (1);
+	free(array);
 	return (1);
 }
 /**
