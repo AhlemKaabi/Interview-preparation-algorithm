@@ -26,9 +26,9 @@ if __name__ == '__main__':
 					if key == '0':
 						continue
 					print(key + ": " , final_data[key])
-				count_L = 0
-				data = {"status_code": [],
-						"file_size": 0}
+				# count_L = 0
+				# data = {"status_code": [],
+				# 		"file_size": 0}
 	except Exception:
 		pass
 	finally:
