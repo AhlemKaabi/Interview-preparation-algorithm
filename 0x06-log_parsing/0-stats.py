@@ -4,6 +4,7 @@
 """
 import sys
 
+
 if __name__ == '__main__':
 	count_L = 0
 	data = {"status_code": [],
@@ -22,6 +23,8 @@ if __name__ == '__main__':
 					final_data[elem] = data["status_code"].count(elem)
 			if count_L == 10:
 				for key in final_data:
+					if key == '0':
+						continue
 					print(key + ": " , final_data[key])
 				count_L = 0
 				data = {"status_code": [],
