@@ -4,10 +4,9 @@
 """
 import sys
 
-
 count_L = 0
 data = {"status_code": [],
-        "file_size": 0}
+		"file_size": 0}
 try:
 	for line in sys.stdin:
 		count_L += 1
@@ -26,6 +25,8 @@ try:
 			count_L = 0
 			data = {"status_code": [],
 					"file_size": 0}
-except:
-    for key in final_data:
-        print(key + ": " , final_data[key])
+except Exception:
+	pass
+finally:
+	for key in final_data:
+		print(key + ": " , final_data[key])
