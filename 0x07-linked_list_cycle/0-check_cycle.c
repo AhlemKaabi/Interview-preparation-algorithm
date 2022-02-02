@@ -20,5 +20,6 @@ int check_cycle(listint_t *list)
 		if (slow_p == fast_p)
 			return (1);
 	}
+
 	return (0);
 }

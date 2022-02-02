@@ -35,6 +35,7 @@ int main(void)
     for (i = 0; i < 4; i++)
         current = current->next;
     temp = current->next;
+
     current->next = head;
 
     if (check_cycle(head) == 0)
