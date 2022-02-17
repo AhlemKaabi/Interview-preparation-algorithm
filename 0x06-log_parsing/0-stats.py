@@ -12,7 +12,7 @@ if __name__ == '__main__':
 	try:
 		for line in sys.stdin:
 			count_L += 1
-			data_list = line[:-1].split(" ")[-2:]
+			data_list = line.split(" ")[-2:]
 			if data_list[0] and data_list[1]:
 				data["status_code"].append(data_list[0])
 				data["file_size"] += int(data_list[1])
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 				for key in final_data:
 					if key == '0':
 						continue
-					print(key + ": " , final_data[key])
+					print(key + ":" , final_data[key])
 				count_L = 0
 				# data = {"status_code": [],
 				# 		"file_size": 0}
@@ -33,4 +33,4 @@ if __name__ == '__main__':
 		pass
 	finally:
 		for key in final_data:
-			print(key + ": " , final_data[key])
+			print(key + ":" , final_data[key])
