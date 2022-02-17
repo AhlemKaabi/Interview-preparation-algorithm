@@ -20,6 +20,7 @@ if __name__ == '__main__':
                     if data_list[0] in codes:
                         data["status_code"].append(data_list[0])
                     data["file_size"] += int(data_list[1])
+                final_data = {}
                 final_data['File size'] = data["file_size"]
                 for elem in sorted(data["status_code"]):
                     if elem not in final_data.keys():
