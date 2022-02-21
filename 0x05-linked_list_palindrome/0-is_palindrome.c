@@ -90,8 +90,9 @@ int is_palindrome(listint_t **head)
 	bool pair;
 
 	if (*head == NULL)
-		return (0);
+		return (1);
 	length = length_list(head);
+
 	pair = is_pair(length);
 
 
