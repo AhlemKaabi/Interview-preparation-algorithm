@@ -54,7 +54,7 @@ def get_candidates(state, n):
 def search(state, solutions, n):
     """ search for a safe place to the queens """
     if is_valid_state(state, n):
-        state_string = state_to_coor(state, n)
+        state_string = state_to_coor(state)
         solutions.append(state_string)
         return
     candidates = get_candidates(state, n)
