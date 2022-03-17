@@ -25,6 +25,16 @@ The N queens puzzle is the challenge of placing N non-attacking queens on an N×
 [[0, 4], [1, 2], [2, 0], [3, 5], [4, 3], [5, 1]]
 @ubuntu:~/0x0C. N Queens$
 ```
+
+### **The Backtracking Algorithm**
+
+	procedure backtrack(c) is
+		if reject(P, c) then return
+		if accept(P, c) then output(P, c)
+		s ← first(P, c)
+		while s ≠ NULL do
+			backtrack(s)
+			s ← next(P, s)
 **Helpful links:**
 
 [N Queen Problem | Backtracking | GeeksforGeeks](https://www.youtube.com/watch?v=0DeznFqrgAI)
@@ -32,3 +42,8 @@ The N queens puzzle is the challenge of placing N non-attacking queens on an N×
 [Solve Coding Interview Backtracking Problems - Crash Course](https://www.youtube.com/watch?v=A80YzvNwqXA) --> [code](https://gist.github.com/RuolinZheng08/cdd880ee748e27ed28e0be3916f56fa6)
 
 [Backtracking (Think Like a Programmer)](https://www.youtube.com/watch?v=gBC_Fd8EE8A)
+
+
+[Backtracking](https://en.wikipedia.org/wiki/Backtracking)
+
+
