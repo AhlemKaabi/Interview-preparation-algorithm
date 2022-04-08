@@ -8,10 +8,9 @@ request(url_movies, function (error, response, body) {
 //   console.log('body:', body); // Print the HTML for the Google homepage.
   const characters = JSON.parse(body).characters;
 //   console.log(characters[0])
-
   for (const url_characters of characters) {
 	request(url_characters, function (error, response, body) {
-	  console.log(JSON.parse(body).name)
+	  console.log(JSON.parse(body).name);
 	});
   }
 });
