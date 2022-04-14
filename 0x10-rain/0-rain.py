@@ -15,28 +15,30 @@ def rain(walls):
     Returns:
         Integer indicating total amount of rainwater retained.
     """
-    if len(walls) == 0:
+    n = len(walls)
+
+    if n == 0:
         return 0
 
-    walls_dict = {}
-    # { "width": idx...}
+    # To store the maximum water
+    # that can be stored
+    res = 0;
 
-    for idx, width in enumerate(walls):
-        if width != 0:
-            walls_dict[str(width)] = idx
+    # For every element of the array
+    for i in range(1, n - 1) :
 
-    keys_list = list(walls_dict)
+        # Find the maximum element on its left
+        left = walls[i];
+        for j in range(i) :
+            left = max(left, walls[j]);
 
-    square_units_of_water = 0
-    for current_wall_key in keys_list[:-1]:
-        next_wall_key = keys_list[keys_list.index(current_wall_key) + 1]
+        # Find the maximum element on its right
+        right = walls[i];
 
-        # mul is the size the retained space by rainwater
-        mul = walls_dict[next_wall_key] - walls_dict[current_wall_key] - 1
+        for j in range(i + 1 , n) :
+            right = max(right, walls[j]);
 
-        if int(current_wall_key) <= int(next_wall_key):
-            square_units_of_water += int(current_wall_key) * mul
-        else:
-            square_units_of_water += int(next_wall_key) * mul
+        # Update the maximum water
+        res = res + (min(left, right) - walls[i]);
 
-    return square_units_of_water
+    return res;
