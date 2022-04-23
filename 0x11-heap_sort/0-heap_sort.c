@@ -80,7 +80,7 @@ void siftDown(int *a, int start, int end, size_t size)
 		if (swap == root)
 			return;
 		swap_(&a[root], &a[swap]);
-		pint_array(a, size);
+		print_array(a, size);
 		/* repeat to continue sifting down the child now.*/
 		root = swap;
 	}
