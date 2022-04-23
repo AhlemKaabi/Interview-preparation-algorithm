@@ -106,3 +106,9 @@ procedure siftDown(a, start, end) is
 
 			root ← swap          (repeat to continue sifting down the child now)
 ```
+
+#### **Compile**
+
+```
+gcc -Wall -Wextra -Werror -pedantic 0-main.c 0-heap_sort.c print_array.c -o 0-heap
+```
