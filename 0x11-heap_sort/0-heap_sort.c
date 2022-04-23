@@ -23,7 +23,7 @@ void heapify(int *array, size_t size)
 	double iParent_size_i;
 	int start;
 
-	iParent_size_i = floor((((int)size - 1) - 1) / 2);
+	iParent_size_i = (int)((((int)size - 1) - 1) / 2);
 	start = (int)iParent_size_i;
 	while (start > 0 || start == 0)
 	{
