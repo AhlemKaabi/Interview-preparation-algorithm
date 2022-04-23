@@ -41,7 +41,10 @@ void heapify(int *array, size_t size)
  */
 void siftDown(int *a, int start, int end, size_t size)
 {
-	int root, iLeftChild_root, child = 0, swap;
+	int root;
+	int iLeftChild_root;
+	int child;
+	int swap;
 
 	root = start;
 	while ((2 * root + 1 < end) || (2 * root + 1 == end))
