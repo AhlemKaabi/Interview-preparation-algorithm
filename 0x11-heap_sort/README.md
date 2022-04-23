@@ -18,6 +18,8 @@ Write in the file 0-O, the big O notations of the time complexity of the Heap so
 * [Heap Sort | GeeksforGeeks](https://www.youtube.com/watch?v=MtQL_ll5KhQ) - annimation!
 
 * [Heapsort - wikipedia](https://en.wikipedia.org/wiki/Heapsort#Pseudocode)
+
+* [Heap Sort Algorithm](https://www.programiz.com/dsa/heap-sort) - step by step graph! + more algorithms
 #### **Pseudocode**
 ```
 iParent(i)     = floor((i-1) / 2) where floor functions map a real number to the largest leading integer.
