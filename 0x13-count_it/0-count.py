@@ -28,8 +28,8 @@ def get_reddit(subreddit):
     Make the Request
     """
     try:
-        base_url = f'https://www.reddit.com/r/{subreddit}/hot.json'
-        request = requests.get(base_url, headers={'User-agent': 'yourbot'})
+        base_url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=100&t='all'"
+        request = requests.get(base_url, headers={'User-agent': 'my-app/0.0.1'}, allow_redirects=False)
     except:
         print('An Error Occured')
     return request.json()
@@ -76,6 +76,11 @@ def count_words(subreddit, word_list):
         request_api = get_reddit(subreddit)
         titles_list = get_post_titles(request_api)
 
+        # count_python = 0
+        # for title in titles_list:
+        #     count_python  += title.lower().count("python")
+        #     print(count_python)
+
         # work on the first element of the list
         word_to_count = word_list[0].lower()
         for title in titles_list:
@@ -86,10 +91,13 @@ def count_words(subreddit, word_list):
             else:
                 prev_count = 0
             new_count = title.lower().count(word_to_count)
+            # print(word_to_count)
+            # print(title)
+            # print(new_count)
             result_dict[word_to_count] = new_count + prev_count
 
         result_dict = sort_dictionary(result_dict)
-
+        # print(result_dict)
         # remove the first element from the word_list
         word_list.pop(0)
         # recall the function with new wordlist
