@@ -12,6 +12,9 @@ result_dict = {}
 
 
 def sort_dictionary(result_dict):
+    """
+	sort the dictionary
+    """
     sorted_by_values = sorted(result_dict.items(),
                               key=lambda kv: kv[1],
                               reverse=True)
@@ -48,7 +51,6 @@ def get_post_titles(r):
 
 def count_words(subreddit, word_list):
     """
-
     Method:
         to querie the Reddit API, parse the title of all hot articles,
         and print a sorted count of given keywords (case-insensitive,
