@@ -36,3 +36,5 @@ Contains functions to print binary trees in a pretty way:
 [Max Heap Insertion and Deletion | Heap Tree Insertion and Deletion with example| Data Structure](https://www.youtube.com/watch?v=NEtwJASLU8Q)[21:35]
 
 [Heaps 3 - Extract Max](https://www.youtube.com/watch?v=mCG5V7yBOZA)
+
+[Heap Data Structures](https://www.tutorialspoint.com/data_structures_algorithms/heap_data_structure.htm)
