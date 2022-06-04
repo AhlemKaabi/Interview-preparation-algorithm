@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""
+    Querie the Reddit API
+"""
 import requests
 
 
