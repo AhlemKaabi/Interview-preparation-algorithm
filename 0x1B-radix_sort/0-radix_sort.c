@@ -1,76 +1,54 @@
 #include "sort.h"
-
 /**
- * countingSort -  Counting sort will sort the array based on the kth digit
- * @a: The array to be printed
- * @n: Number of elements in @array
- * @div: the kth division digit (1, 10, 100 ..)
+ * current_digit_sort - sort by current digit
+ * @array: array
+ * @size: size of the array
+ * @tmp: temporary array
+ * @exp: expo
+ * Return: sorted array
  */
-void countingSort(int *a, int n, int div)
+int current_digit_sort(int *array, size_t size, int *tmp, long exp)
 {
-	/**
-	 * Making a count array of size 10, for counting
-	 * the frequency of digits of array elements.
-	 * Making a temporary array for storing the output.
-	 */
-	int freq[10];
-	int temp[n];
-	int init, count, u, t, f;
+	size_t i;
+	int aux[10] = {0};
 
-	/* Initializing all of its entries with 0. */
-	for (init = 0; init < 10 ; init++)
-		freq[init] = 0;
-
-	/* Increasing count of kth  digit of a[i].*/
-	for (count = 0; count < n; count++)
-		freq[(a[count] / div) % 10]++;
-	/* freq: 0, 1, 1, 2, 0, 0, 2, 1, 1, 2 */
-
-	/**
-	 * Updating freq[i] such that freq[i] now contains
-	 * actual position of this digit in temp[].
-	 * check the algorithm! without shift!!
-	 * https://www.youtube.com/watch?v=OKd534EWcdk
-	 */
-	for (u = 1; u < 10; u++)
-		freq[u] += freq[u - 1];
-	/* freq: 0, 1, 2, 4, 4, 4, 6, 7, 8, 10 */
-
-	/* Building the temporary array. */
-	for (t = n - 1; t > -1; t--)
-	{
-		temp[freq[(a[t] / div) % 10] - 1] = a[t];
-		freq[(a[t] / div) % 10]--;
-	}
-
-	/* Updating the elements in array. */
-	for (f = 0; f < n; f++)
-		a[f] = temp[f];
+	for (i = 0; i < size; i++)
+		aux[(array[i] / exp) % 10]++, tmp[i] = 0;
+	for (i = 1; i < 10; i++)
+		aux[i] += aux[i - 1];
+	for (i = size - 1; i >= 0; i--)
+		tmp[--aux[(array[i] / exp) % 10]] = array[i];
+	for (i = 0; i < size; i++)
+		array[i] = tmp[i];
+	return (0);
 }
+
 /**
  * radix_sort - sort an array of integers in ascending order
  * @array: The array to be printed
  * @size: Number of elements in @array
  */
-
 void radix_sort(int *array, size_t size)
 {
-	int max = 0;
 	size_t i;
-	int div;
+	long exp = 1;
+	int *tmp, max = INT_MIN;
 
-	/* Find the max*/
-	max = array[0];
+	if (!array || size < 2)
+		return;
+
+	tmp = malloc(sizeof(int *) * size);
+	if (!tmp)
+		return;
+
 	for (i = 0; i < size; i++)
-	{
-		if (array[i] > max)
-			max = array[i];
-	}
+		max = array[i] > max ? array[i] : max;
 
-	/* Calling countingSort */
-	for (div = 1; (max / div) > 0; div *= 10)
+	while (max / exp > 0)
 	{
-		countingSort(array, size, div);
+		current_digit_sort(array, size, tmp, exp);
 		print_array(array, size);
+		exp *= 10;
 	}
+	free(tmp);
 }
