@@ -32,7 +32,8 @@ void radix_sort(int *array, size_t size)
 {
 	size_t i;
 	long exp = 1;
-	int *tmp, max = INT_MIN;
+	int *tmp;
+	int max = INT_MIN;
 
 	if (!array || size < 2)
 		return;
