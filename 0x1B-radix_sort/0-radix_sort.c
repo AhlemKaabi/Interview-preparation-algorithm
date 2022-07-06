@@ -4,42 +4,41 @@
  * @array: array
  * @size: size of the array
  * @tmp: temporary array
- * @exp: expo
- * Return: sorted array
+ * @exp: exponential
+ * Return: array
  */
 int current_digit_sort(int *array, size_t size, int *tmp, long exp)
 {
-	size_t i;
+	size_t i, j, x;
 	int aux[10] = {0};
 
 	for (i = 0; i < size; i++)
 		aux[(array[i] / exp) % 10]++, tmp[i] = 0;
-	for (i = 1; i < 10; i++)
-		aux[i] += aux[i - 1];
-	for (i = size - 1; i >= 0; i--)
-		tmp[--aux[(array[i] / exp) % 10]] = array[i];
-	for (i = 0; i < size; i++)
-		array[i] = tmp[i];
+	for (j = 1; j < 10; j++)
+		aux[j] += aux[j - 1];
+	for (j = size - 1; j >= 0; j--)
+		tmp[--aux[(array[j] / exp) % 10]] = array[j];
+	for (x = 0; x < size; x++)
+		array[x] = tmp[x];
 	return (0);
 }
-
 /**
- * radix_sort - sort an array of integers in ascending order
- * @array: The array to be printed
- * @size: Number of elements in @array
+ * radix_sort - RADIX sort function
+ * @array: array to be sorted
+ * @size: size of the array to be sorted
+ * Return: nothing
  */
 void radix_sort(int *array, size_t size)
 {
 	size_t i;
 	long exp = 1;
-	int *tmp;
-	int max = INT_MIN;
+	int *temp, max = INT_MIN;
 
 	if (!array || size < 2)
 		return;
 
-	tmp = malloc(sizeof(int *) * size);
-	if (!tmp)
+	temp = malloc(sizeof(int *) * size);
+	if (!temp)
 		return;
 
 	for (i = 0; i < size; i++)
@@ -47,9 +46,9 @@ void radix_sort(int *array, size_t size)
 
 	while (max / exp > 0)
 	{
-		current_digit_sort(array, size, tmp, exp);
+		current_digit_sort(array, size, temp, exp);
 		print_array(array, size);
 		exp *= 10;
 	}
-	free(tmp);
+	free(temp);
 }
