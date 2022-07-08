@@ -23,40 +23,27 @@ void countingSort(int *a, int n, int div)
 	/* Initializing all of its entries with 0. */
 	for (init = 0; init < 10 ; init++)
 		freq[init] = 0;
-
 	/* Increasing count of kth  digit of a[i].*/
 	for (count = 0; count < n; count++)
 		freq[(a[count] / div) % 10]++;
-	/* freq: 0, 1, 1, 2, 0, 0, 2, 1, 1, 2 */
-
-	/**
-	 * Updating freq[i] such that freq[i] now contains
-	 * actual position of this digit in temp[].
-	 * check the algorithm! without shift!!
-	 * https://www.youtube.com/watch?v=OKd534EWcdk
-	 */
+	/* check the algorithm! https://www.youtube.com/watch?v=OKd534EWcdk */
 	for (u = 1; u < 10; u++)
 		freq[u] += freq[u - 1];
-	/* freq: 0, 1, 2, 4, 4, 4, 6, 7, 8, 10 */
-
 	temp = malloc(sizeof(int) * (n));
 	if (!temp)
 	{
 		free(freq);
 		return;
 	}
-
 	/* Building the temporary array. */
 	for (t = n - 1; t > -1; t--)
 	{
 		temp[freq[(a[t] / div) % 10] - 1] = a[t];
 		freq[(a[t] / div) % 10]--;
 	}
-
 	/* Updating the elements in array. */
 	for (f = 0; f < n; f++)
 		a[f] = temp[f];
-
 	free(temp);
 	free(freq);
 }
