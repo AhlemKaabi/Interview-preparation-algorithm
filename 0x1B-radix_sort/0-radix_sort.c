@@ -72,6 +72,9 @@ void radix_sort(int *array, size_t size)
 	size_t i;
 	int div;
 
+	if (!array || size < 2)
+		return;
+
 	/* Find the max*/
 	max = array[0];
 	for (i = 0; i < size; i++)
