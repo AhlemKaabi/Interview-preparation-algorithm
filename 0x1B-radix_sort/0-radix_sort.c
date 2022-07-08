@@ -13,10 +13,13 @@ void countingSort(int *a, int n, int div)
 	 * the frequency of digits of array elements.
 	 * Making a temporary array for storing the output.
 	 */
-	int freq[10];
-	int temp[n];
+	int *freq;
+	int *temp;
 	int init, count, u, t, f;
 
+	freq = malloc(sizeof(int) * (10));
+	if (!freq)
+		return;
 	/* Initializing all of its entries with 0. */
 	for (init = 0; init < 10 ; init++)
 		freq[init] = 0;
@@ -36,6 +39,13 @@ void countingSort(int *a, int n, int div)
 		freq[u] += freq[u - 1];
 	/* freq: 0, 1, 2, 4, 4, 4, 6, 7, 8, 10 */
 
+	temp = malloc(sizeof(int) * (n));
+	if (!temp)
+	{
+		free(freq);
+		return;
+	}
+
 	/* Building the temporary array. */
 	for (t = n - 1; t > -1; t--)
 	{
@@ -46,6 +56,9 @@ void countingSort(int *a, int n, int div)
 	/* Updating the elements in array. */
 	for (f = 0; f < n; f++)
 		a[f] = temp[f];
+
+	free(temp);
+	free(freq);
 }
 /**
  * radix_sort - sort an array of integers in ascending order
