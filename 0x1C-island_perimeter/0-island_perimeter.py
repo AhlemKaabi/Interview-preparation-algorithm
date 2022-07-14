@@ -2,6 +2,8 @@
 """
     The perimeter of the island described in grid.
 """
+
+
 def island_perimeter(grid):
     """
     Method:
@@ -25,13 +27,13 @@ def island_perimeter(grid):
     nrows = len(grid)
     ncols = len(grid[0])
     for i in range(nrows):
-        perimeter += sum(grid[i])*4
+        perimeter += sum(grid[i]) * 4
         for j in range(ncols):
             if grid[i][j] == 1:
-                if j+1<ncols and grid[i][j+1] == 1:
+                if j + 1 < ncols and grid[i][j + 1] == 1:
                     # remove one side from each grid cell
                     perimeter -= 2
-                if i+1<nrows and grid[i+1][j] == 1:
+                if i + 1 < nrows and grid[i + 1][j] == 1:
                     # remove one side from each grid cell
                     perimeter -= 2
     return perimeter
