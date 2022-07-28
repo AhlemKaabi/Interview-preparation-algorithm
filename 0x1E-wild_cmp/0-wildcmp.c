@@ -1,20 +1,15 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-// The main function that checks if two given strings
-// match. The first string may contain wildcard characters
+/**
+ * wildcmp - function that compares two strings
+ * @s1: first string
+ * @s2: second string
+ *
+ * Return: 1 if the strings can be considered identical, else 0
+ */
 int wildcmp(char *s1, char *s2)
 {
-	// If we reach at the end of both strings, we are done
-
-	// Make sure that the characters after '*' are present
-	// in second string. This function assumes that the
-	// first string will not contain two consecutive '*'
-
-
-	// If there is *, then there are two possibilities
-	// a) We consider current character of second string
-	// b) We ignore current character of second string.
 	if (!*s1)
 	{
 		if (*s2 == '*')
